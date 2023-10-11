@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inputs and Table</title>
+    <style>
+        #arrow {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        #dropdown {
+            border: 1px solid #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+            position: absolute; 
+        }
+        #dropdown div {
+            padding: 8px;
+            cursor: pointer;
+        }
+        #dropdown div:hover {
+            background-color: #f5f5f5;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    
+    <input type="text" name="input1" id="input1" placeholder="Input 1" onkeyup="fetchMatches(this.value)">
+    <div id="dropdown" style="display: none;"></div>
+    <span id="arrow">→</span>
+    <input type="text" name="input2" id="input2" placeholder="Input 2", onkeyup="fetchMatches(this.value)">
+    <div id="dropdown" style="display: none;"></div>
+
+    <table border="1" style="margin-top: 20px;">
+        <tr>
+            <td id="td1"></td>
+            <td id="td2"></td>
+        </tr>
+        <tr>
+            <td id="td3">No</td>
+            <td id="td4"></td>
+        </tr>
+        <tr>
+            <td id="td5">No</td>
+            <td id="td6">No</td>
+        </tr>
+    </table>
+
+    <script>
+        const input1 = document.getElementById('input1');
+        const input2 = document.getElementById('input2');
+        
+        input1.addEventListener('input', function () {
+            document.getElementById('td1').innerText = this.value;
+            document.getElementById('td3').innerText = 'No ' + this.value;
+            document.getElementById('td5').innerText = 'No ' + this.value;
+        });
+
+        input2.addEventListener('input', function () {
+            document.getElementById('td2').innerText = this.value;
+            document.getElementById('td4').innerText = this.value;
+            document.getElementById('td6').innerText = 'No ' + this.value;
+        });
+
+    function fetchMatches(query) {
+    if (query.length === 0) {
+        document.getElementById('dropdown').style.display = 'none';
+        return;
+    }
+
+    
+
+    fetch(`/autocomplete?query=${query}`)
+    .then(response => response.json())
+    .then(data => {
+        let dropdown = document.getElementById('dropdown');
+        dropdown.innerHTML = '';
+
+        for (let item of data.matches) {
+            let div = document.createElement('div');
+            div.innerText = item;
+            dropdown.appendChild(div);
+        }
+
+        dropdown.style.display = 'block';
+    });
+}
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
+

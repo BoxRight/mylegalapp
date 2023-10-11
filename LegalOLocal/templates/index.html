@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalO</title>
+    <style>
+        /* General styles */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+
+        .section {
+            flex: 1;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .section-2 {
+            flex:1;
+            background-color: #fff;
+            border:1px solid #ccc;
+            text-align: center;
+            padding: 20px;
+        }
+        /*  header styles */
+        .header {
+            position:fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            font-size: 15px;
+            z-index: 50; /* Set a higher z-index to keep it above other elements */
+        }
+        
+
+        .content {
+            margin-top: 20px; /* Adjust margin to avoid overlapping with header */
+            padding: 20px;
+        }
+
+        /* Container styles */
+        .section-container-1 {
+            margin-top: 120px;
+            height: 800px;
+            overflow:auto;
+        }
+
+        .section-container-2 {
+            margin-top: 120px;
+            height: 800px;
+            overflow: auto;
+            color: #fff;
+        }
+
+        /* Form styles */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-section {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+            width: 100%;
+            max-width: 400px;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="date"], input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        sublabel {
+            font-size: 12px;
+            color: #888;
+            display: block; /* Ensure it displays on a new line */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .contract {
+            margin: 15px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            text-align: justify;
+            font-size: 14px;
+        }
+
+        .section-heading {
+                font-weight: bold;
+                font-size: 16px;
+                margin-top: 10px;
+            }
+            
+        .label {
+            font-weight: bold;
+        }
+            
+        .underscore {
+            border-bottom: 1px dotted #000;
+            display: inline-block;
+            min-width: 100px; /* Adjust as needed */
+            padding: 2px;
+        }
+        
+        .my-table {
+            width: 400px;          /* Fixed width for the table */
+            word-wrap: break-word;
+        }
+
+        .table_container {
+            overflow-x:auto;
+        }
+
+        .my-table th, .my-table td {
+            padding: 8px;          /* Padding for cell content */
+            border: 1px solid #ddd;  /* Cell border */
+            text-align: left;     /* Aligns text to the left */
+            word-wrap: break-word;
+        }
+
+        .highlighted-clause {
+        background-color: #FFFFCC;  /* Light yellow background*/
+        border: 1px solid #FFD700;  /* Gold border*/
+        padding: 8px;
+        margin-top: 10px;
+        word-wrap: break-word;
+        }
+
+
+    </style>
+    <div class="header">
+        <h1>LegalO</h1>
+    </div>
+</head>
+
+<body>
+    
+    
+<div class="section-container-1">
+    
+    <div class="section"><br><br>
+        <div class="form-container">
+            
+            <h2>Leasing Agreement Form</h2>
+            <form action="/" method="post" class="form-section">
+            <label>Enter Date:</label>
+            <input type="date" id="date" name="date"><br>
+
+            <label>Name of Lessor:</label>
+            <input type="text" id="partyA" name="partyA"><br>
+
+            <label>Name of Lessee:</label>
+            <input type="text" id="partyB" name="partyB"><br>
+
+            <label>Duration of Leasing (Months):</label><br><br>
+            <input type="number" id="duration" name="duration">
+            <sublabel>Press control for multiple selection</sublabel>
+            <select id="durationOptions" name="selection[]" multiple>
+                <option value="5">Leasing will last less than 5 years</option>
+                <option value="6">Leasing will not last 20 years or more</option>
+                <option value="10">Leasing will last at least a year</option>
+                <option value="41">An undetermined duration</option>
+            </select><br><br>
+
+            <label>Indirect Object or Leased Object:</label>
+            <input type="text" id="indirectObject" name="indirectObject" ><br>
+            <sublabel>Press control for multiple selection</sublabel>
+            <select id="indirectObjectOption" name="selection[]" multiple>
+                <option value="7">Leased object is industry oriented</option>
+                <option value="8">Leased object is a house</option>
+                <option value="9">Leased object is perishable</option>
+                <option value="12">Leased object is a house in urban zone</option>
+                <option value="27">There are necessary items for house purpose</option>
+            </select><br><br>
+
+            <label>Rent that Party A agrees to establish:</label><br>
+            <input type="number" id="otherA" name="otherA"><br>
+            <sublabel>Press control for multiple selection</sublabel>
+            <select id="partyAAgreement" name="selection[]" multiple>
+                <option value="29">Lessor must maintain the object</option>
+                <option value="36">Lessor answers for damages and compensation</option>
+                <option value="37">Lessee can make useful or urgent improvements</option>
+                <option value="21">Lessor must notify transmission of leased object</option>
+                <option value="23">Lessor must notify new offer in no more than 30 days</option>
+            </select><br><br>
+
+            <label>Terms that Party B agrees to establish:</label><br>
+            <input type="text" id="otherB" name="otherB"><br>
+            <sublabel>Press control for multiple selection</sublabel>
+            <select id="partyBAgreement" name="selection[]" multiple> 
+                <option value="32">Lessee is responsible for reparations</option>
+                <option value="37">Lessee can make useful or urgent improvements</option>
+            </select><br><br>
+
+            <label>Penalty for Breach of Behavior Obligation:</label><br><br>
+            for rent payment:
+            <input type="text" id="penaltyB" name="penaltyB"><br>
+            <sublabel>Press control for multiple selection</sublabel>
+            <select id="penalties" name="selection[]" multiple>
+                <option value="16">The leasing ends</option>
+                <option value="38">Rent is no longer enforceable for period</option>
+            </select><br><br>
+            for use and fruition:
+            <input type="text" id="penaltyA" name="penaltyA"><br>
+            <select id="penalties" name="selection[]" multiple>
+                <option value="16">The leasing ends</option>
+                <option value="38">Rent is no longer enforceable for period</option>
+            </select><br><br>
+            
+            <label>Publicity Choice:</label>
+            <input type="checkbox" id="publicityChoice" name="publicityChoice"><br>           
+            
+            <input type="button" id="fillUnderscoreButton" value="Fill Underscores">
+            <input type="submit" value="Submit Form">
+            </form>
+        
+        </div>
+    </div>
+</div>
+<div class="section-container-1">
+    <div class="section-2">
+        <title>Contract of Leasing Agreement</title>
+
+        <div class="contract">
+            <h2>CONTRACT OF LEASING AGREEMENT:</h2>
+
+            <p>This contract is made on <span data-fill="underscoreSpanDate" class="underscore"></span>, by and between:</p>
+
+            <p class="label">Party A (Lessor):</p>
+            <p><span data-fill="spanPartyA" class="underscore"></span></p>
+
+            <p>(hereinafter referred to as "Party A") and</p>
+
+            <p class="label">Party B (Lessee):</p>
+            <p><span data-fill="spanPartyB" class="underscore"></span></p>
+
+            <p>(hereinafter referred to as "Party B")</p>
+
+            <p>(collectively referred to as the "Parties").</p>
+
+            <h3 class="section-heading">1. DURATION OF THE CONTRACT</h3>
+
+            <p>The duration of this contract will begin by the date of agreement <span data-fill="underscoreSpanDate" class="underscore"></span> and will last for <span data-fill="spanDuration" class="underscore"></span> months.</p>
+                        
+            <h3 class="section-heading">2. PURPOSE OF THE CONTRACT</h3>
+
+            <p>This Agreement is intended to establish the terms and conditions under which lessor gives use and fruition to <span data-fill="spanPartyB" class="underscore"></span>, over <span data-fill="spanIndirectObject" class="underscore"></span>.</p>
+
+            <h3 class="section-heading">3. OBLIGATIONS OF THE PARTIES</h3>
+
+            <h4 class="section-heading">3.1. Obligations Pertaining to Behavior:</h4>
+
+            <p>a) <span data-fill="spanPartyB" class="underscore"></span> agrees to pay as rent <span data-fill="spanOtherA" class="underscore"></span> to <span data-fill="spanPartyA" class="underscore"></span>.</p>
+
+            <p>b) In consideration of the above payment, <span data-fill="spanPartyA" class="underscore"></span> agrees to <span data-fill="spanPartyB" class="underscore"></span>.</p>
+
+            <h3 class="section-heading">4. ENFORCEMENT AND PENALTIES</h3>
+
+            <p>3.1. Breach of obligations pertaining to payment of rent shall result in <span data-fill="spanPenaltyB" class="underscore"></span>.</p>
+
+            <p>3.2. Breach of obligations pertaining to giving use and fruition shall result in <span data-fill="spanPenaltyA" class="underscore"></span>.</p>
+
+            <h3 class="section-heading">5. PUBLICITY</h3>
+
+            <p>This Agreement shall be <span data-fill="spanPublicityChoice" class="underscore"></span> a public record for purposes of enforcement and preference over other agreements.</p>
+            
+            <h3 class="section-heading"> OTHERS:</h3>
+        </div>
+    </div>
+</div>
+<div class="section-container-1">
+    
+    <div class="section">
+    {% if results %}
+    <!-- Table for Suggestions -->
+    <div class="table_container">
+    <h3>Suggestions</h3>
+    <table class="my-table">
+    <thead>
+        <tr>
+        <th>Select</th>
+        <th>Content</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for value in results.suggestions %}
+        <tr>
+            <td><input type="checkbox" class="suggestion" value="{{ value }}"></td>
+            <td>{{ value }}</td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+    </table>
+
+    <!-- Table for Requirements -->
+    <h3>Requirements</h3>
+    <table class="my-table">
+    <thead>
+        <tr>
+        <th>Select</th>
+        <th>Content</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for value in results.requirements %}
+        <tr>
+            <td><input type="checkbox" class="requirement" value="{{ value }}"></td>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <table>
+    <tbody>
+        <tr>
+            <td>{{ results.error }}</td>
+        </tr>
+    </tbody>
+
+    </table>
+    </div>
+    {% endif %}
+    <button id="processSelections">Process Selections</button>
+
+    <a href="/autocomplete">Go to Autocomplete</a>
+
+    </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+// Event listener for "Fill Underscores" button
+document.getElementById("fillUnderscoreButton").addEventListener("click", function() {
+    // Get input elements
+    const dateInput = document.getElementById("date");
+    const partyA = document.getElementById("partyA");
+    const partyB = document.getElementById("partyB");
+    const indirectObject = document.getElementById("indirectObject");
+    const partyAAgreement = document.getElementById("partyAAgreement");
+    const partyBAgreement = document.getElementById("partyBAgreement");
+    const penalty = document.getElementById("penalty");
+    const remedy = document.getElementById("remedy");
+    const publicityChoice = document.getElementById("publicityChoice");
+    const duration = document.getElementById('duration');
+    const otherA = document.getElementById('otherA');
+    const penaltyA = document.getElementById('penaltyA');
+    const penaltyB = document.getElementById('penaltyB');
+    
+    // Map input variables to their values
+    const inputValues = {
+        underscoreSpanDate: dateInput ? dateInput.value : "",
+        spanPartyA: partyA ? partyA.value : "",
+        spanPartyB: partyB ? partyB.value : "",
+        spanIndirectObject: indirectObject ? indirectObject.value : "",
+        spanPartyAAgreement: partyAAgreement ? partyAAgreement.value : "",
+        spanPartyBAgreement: partyBAgreement ? partyBAgreement.value : "",
+        spanPenaltyBehavior: penalty ? penalty.value : "",
+        spanRemedy: remedy ? remedy.value : "",
+        spanPublicityChoice: publicityChoice ? publicityChoice.value : "",
+        spanDuration: duration ? duration.value : " ",
+        spanOtherA: otherA ? otherA.value : " ",
+        spanPenaltyB: penaltyB ? penaltyB.value : " ",
+        spanPenaltyA: penaltyA ? penaltyA.value : " ",
+    };
+
+    // Fill the contract
+    const contractElements = document.querySelectorAll(".underscore");
+    contractElements.forEach(element => {
+        const fillKey = element.getAttribute("data-fill");
+        if (fillKey && inputValues[fillKey]) {
+            element.textContent = inputValues[fillKey];
+        }
+    });
+});
+
+
+
+document.getElementById("processSelections").addEventListener("click", function() {
+    // Capture all checkboxes from suggestions and requirements
+    const suggestionCheckboxes = document.querySelectorAll(".suggestion:checked");
+    const requirementCheckboxes = document.querySelectorAll(".requirement:checked");
+
+    // Function to process selections and return custom clauses
+    function processSelections(checkboxes) {
+        let clauses = [];
+        checkboxes.forEach(checkbox => {
+            clauses.push(checkbox.value);
+        });
+        return clauses;
+    }
+
+    // Process selections and get custom clauses
+    const suggestionClauses = processSelections(suggestionCheckboxes);
+    const requirementClauses = processSelections(requirementCheckboxes);
+
+    // Append these clauses to the contract
+    const contractDiv = document.querySelector(".contract");
+
+    // Assuming you want to append them as new paragraphs
+    suggestionClauses.forEach(clause => {
+        const p = document.createElement("p");
+        p.textContent = `Given the content of this contract, "${clause}" as mandatory for this case.`;clause;
+        contractDiv.appendChild(p);
+    });
+
+    requirementClauses.forEach(clause => {
+        const p = document.createElement("p");
+        p.textContent = `Given the content of this contract, it is also necessary to have "${clause}" as mandatory for this case.`;clause;
+        contractDiv.appendChild(p);
+    });
+
+    // If needed, save to sessionStorage or do any other post-processing here.
+});
+});
+
+
+ 
+    
+    
+    
+
+
+    
+
+</script>
+
+</body>
+</html>
